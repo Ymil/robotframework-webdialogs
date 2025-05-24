@@ -12,6 +12,8 @@ Features
 - Ability to create custom HTML dialog templates with Jinja2.
 - Architecture based on Robot Framework client + Flask server for maximum flexibility.
 
+![ezgif-3341d1f635d951](https://github.com/user-attachments/assets/6be4c67d-66ac-4227-b1da-f346b55fea88)
+
 ## Installation
 
 pip install robotframework-webdialogs
