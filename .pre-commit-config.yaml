@@ -1,0 +1,41 @@
+repos:
+  # Formateador de código Python
+  - repo: https://github.com/psf/black
+    rev: 24.3.0  # Versión estable más reciente
+    hooks:
+      - id: black
+        language_version: python3
+        args: [--line-length=120]
+
+  # Linter para Python
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.0.0
+    hooks:
+      - id: flake8
+        additional_dependencies: [flake8-bugbear==24.2.6]
+        args: [--max-line-length=120, --ignore=E203]
+
+  # Verificador de imports
+  - repo: https://github.com/pycqa/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        args: ["--profile", "black", "--line-length=120"]
+
+  - repo: https://github.com/MarketSquare/robotframework-robocop
+    # Robocop version.
+    rev: v6.0.0
+    hooks:
+      # Run the formatter.
+      - id: robocop-format
+
+  # Ejecutor de pruebas básicas (opcional)
+  - repo: local
+    hooks:
+      - id: run-robot-tests
+        name: Run basic Robot tests
+        entry: python -m robot --exitonfailure tests/
+        language: system
+        types: [python]
+        pass_filenames: false
+        stages: [pre-push]

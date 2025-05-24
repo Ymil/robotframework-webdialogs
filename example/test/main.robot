@@ -1,37 +1,62 @@
 *** Settings ***
-Library    WebDialogs     WITH NAME    Dialogs
+Documentation     Test suite demonstrating web dialogs interaction
+...               Covers user input collection, selections, and manual verification
+Library          WebDialogs    WITH NAME    Dialogs
+Suite Teardown   Dialogs.Close
+Test Timeout     2 minutes
 
-Suite Teardown   Dialogs.close
-    
+*** Variables ***
+${DEFAULT_DELAY}    1s    # Configurable delay between interactions
 
 *** Test Cases ***
-Ask For Name
-    ${name}=    Get Value From User    What is your name?
-    Log to console    Entered name: ${name}
+Get User Personal Information
+    [Documentation]    Collects basic personal information through dialogs
+    ${name}=    Dialogs.Get Value From User    Please enter your first name:
+    Log To Console    User provided name: ${name}
+    
+    ${lastname}=    Dialogs.Get Value From User    Please enter your last name:
+    Log To Console    User provided last name: ${lastname}
 
-    ${lastname}=    Get Value From User    What is your last name?
-    Log to console    Entered last name: ${lastname}
+Select Gender From Options
+    [Documentation]    Demonstrates single-selection dialog
+    @{genders}=    Create List    Male    Female    Non-binary    Prefer not to say
+    ${gender}=    Dialogs.Get Selection From User    
+    ...    Please select your gender:    
+    ...    options=${genders}
+    Log To Console    Selected gender: ${gender}
 
-Ask For Gender
-    ${genders} =    Create List     Male   Female
-    ${gender}=   Get Selection From User    What is your gender?     options=${genders}
-    Log to console    Entered gender: ${gender}
+Select Multiple Favorite Animals
+    [Documentation]    Demonstrates multi-selection dialog with validation
+    @{animals}=    Create List    Cats    Dogs    Horses    Birds    Fish
+    ${selected_animals}=    Dialogs.Get Selections From User    
+    ...    Select your favorite animals:    
+    ...    options=${animals}
+    
+    Should Not Be Empty    ${selected_animals}    No animals selected
+    Log To Console    Favorite animals: ${selected_animals}
 
-Ask For Animals
-    ${animals} =   Create List     Cats   Dogs  Horses
-    ${selected_animals}=   Get Selections From User    What are your favorite animals?     options=${animals}
-    Log to console    Entered animals: ${selected_animals}
+Manual Verification Step
+    [Documentation]    Requires manual user verification
+    ${verification_result}=    Dialogs.Execute Manual Step    
+    ...    Please verify the device connection    
+    Log To Console    Verification result: ${verification_result}
 
-Pass Or Fail
-    ${result}     Execute Manual Step   Manual Verification
-    Log to console      Result: ${result}
+Handle Failed Manual Verification
+    [Documentation]    Tests error handling for manual steps
+    Run Keyword And Expect Error    *Verification Failed*    
+    ...    Dialogs.Execute Manual Step    
+    ...    This step should fail    
+    ...    default_error=Verification Failed
 
-Pass Or Fail With Default Message
-    Run Keyword And Expect Error    *Error*     Execute Manual Step   Manual Verification   default_error=Error message
+Pause Execution For Physical Action
+    [Documentation]    Pauses test for physical interaction
+    Dialogs.Pause Execution    
+    ...    Please connect the network cables before continuing    
 
-Pause Execution
-    Pause Execution     Connect cables
-
-Custom Execution
-    ${response} =   Execute Custom Step     step=complexform
-    Log to console  ${response}
+Process Complex Form Submission
+    [Documentation]    Tests custom form handling
+    ${form_response}=    Dialogs.Execute Custom Step    
+    ...    step=complexform    
+    
+    Should Contain    ${form_response}    SUCCESS    Form submission failed
+    Log To Console    Form processing result: ${form_response}

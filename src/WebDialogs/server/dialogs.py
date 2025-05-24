@@ -1,38 +1,46 @@
 import threading
 
+
 class Dialog:
     def __init__(self, message):
         self.message = message
         self.response = None
-    
+
     def answer(self, response):
         self.response = response
-    
+
     def get_response(self):
         return self.response
 
+
 class CustomStepDialog(Dialog):
-    def __init__(self, message = "", step = ""):
+    def __init__(self, message="", step=""):
         super().__init__(message)
         self.step = step
-        
+
+
 class PauseExecutionDialog(Dialog):
     pass
 
+
 class ExecuteManualStepDialog(Dialog):
     pass
+
 
 class GetSelectionFromUserDialog(Dialog):
     def __init__(self, message, options):
         super().__init__(message)
         self.options = options
-    
+
+
 class GetSelectionsFromUserDialog(GetSelectionFromUserDialog):
     pass
+
 
 class GetValueFromUserDialog(Dialog):
     def __init__(self, message):
         super().__init__(message)
+
 
 class DialogBuilder:
     @staticmethod
@@ -50,7 +58,7 @@ class DialogBuilder:
         elif type == "execute_custom_step":
             return CustomStepDialog(message, **kwargs)
         raise Exception(f"Unknown dialog type: {type}")
-        
+
 
 class DialogManager:
     def __init__(self):
@@ -60,7 +68,7 @@ class DialogManager:
     def reset(self):
         with self.lock:
             self.dialog = None
-            
+
     def create(self, type, message, **kwargs):
         with self.lock:
             self.dialog = DialogBuilder.build(type, message, **kwargs)

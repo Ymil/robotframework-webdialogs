@@ -172,3 +172,9 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# RobotFramework
+
+log.html
+output.xml
+report.html
