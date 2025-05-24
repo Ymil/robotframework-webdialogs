@@ -1,0 +1,41 @@
+{% extends "dialogs/layout.html" %}
+{% block dialog_content %}
+<h4 class="card-title mb-4 text-center">Complex Form</h4>
+<form method="post" action="/dialog/submit">
+  <p>This form is custom and return all the values</p>
+  <div class="mb-3">
+    <input name="input" class="form-control form-control-lg" required
+      autofocus>
+  </div>
+  <div class="mb-3">
+    <select name="selector" class="form-control form-control-lg" required autofocus>
+      <option value="option-1">Option 1</option>
+      <option value="option-2">Option 2</option>
+      <option value="option-3">Option 3</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="checkbox" value="1" id="flexCheckDefault-1">
+      <label class="form-check-label" for="flexCheckDefault-1">
+        Option 1
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="checkbox" value="2" id="flexCheckDefault-2">
+      <label class="form-check-label" for="flexCheckDefault-2">
+        Option 2
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="checkbox" value="3" id="flexCheckDefault-3">
+      <label class="form-check-label" for="flexCheckDefault-3">
+        Option 3
+      </label>
+    </div>
+  </div>
+  <div class="d-grid">
+    <button type="submit" class="btn btn-primary btn-lg">Send</button>
+  </div>
+</form>
+{% endblock %}

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.10 on linux)" generated="2025-05-24T21:42:13.190991" rpa="false" schemaversion="5">
+<suite id="s1" name="Robotframework-Webdialogs" source="/workspaces/robotframework-webdialogs">
+<suite id="s1-s1" name="Example" source="/workspaces/robotframework-webdialogs/example">
+<suite id="s1-s1-s1" name="Test" source="/workspaces/robotframework-webdialogs/example/test">
+<suite id="s1-s1-s1-s1" name="Main" source="/workspaces/robotframework-webdialogs/example/test/main.robot">
+<test id="s1-s1-s1-s1-t1" name="Ask For Name" line="8">
+<kw name="Get Value From User" owner="Dialogs">
+<msg time="2025-05-24T21:44:10.023075" level="INFO">{'message': 'What is your name?'}</msg>
+<msg time="2025-05-24T21:44:10.023710" level="INFO">${name} = Pedro</msg>
+<var>${name}</var>
+<arg>What is your name?</arg>
+<status status="PASS" start="2025-05-24T21:42:14.463197" elapsed="115.560864"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Entered name: ${name}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-05-24T21:44:10.024748" elapsed="0.000977"/>
+</kw>
+<kw name="Get Value From User" owner="Dialogs">
+<msg time="2025-05-24T21:44:16.087847" level="INFO">{'message': 'What is your last name?'}</msg>
+<msg time="2025-05-24T21:44:16.088153" level="INFO">${lastname} = Sanchez</msg>
+<var>${lastname}</var>
+<arg>What is your last name?</arg>
+<status status="PASS" start="2025-05-24T21:44:10.026698" elapsed="6.061567"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Entered last name: ${lastname}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-05-24T21:44:16.088664" elapsed="0.000793"/>
+</kw>
+<status status="PASS" start="2025-05-24T21:42:14.461021" elapsed="121.628689"/>
+</test>
+<test id="s1-s1-s1-s1-t2" name="Ask For Gender" line="15">
+<kw name="Create List" owner="BuiltIn">
+<msg time="2025-05-24T21:44:16.091278" level="INFO">${genders} = ['Male', 'Female']</msg>
+<var>${genders}</var>
+<arg>Male</arg>
+<arg>Female</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2025-05-24T21:44:16.090905" elapsed="0.000575"/>
+</kw>
+<kw name="Get Selection From User" owner="Dialogs">
+<msg time="2025-05-24T21:44:20.634645" level="INFO">{'message': 'What is your gender?', 'options': ['Male', 'Female']}</msg>
+<msg time="2025-05-24T21:44:20.635147" level="INFO">${gender} = Female</msg>
+<var>${gender}</var>
+<arg>What is your gender?</arg>
+<arg>options=${genders}</arg>
+<status status="PASS" start="2025-05-24T21:44:16.091736" elapsed="4.543819"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Entered gender: ${gender}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-05-24T21:44:20.636009" elapsed="0.000433"/>
+</kw>
+<status status="PASS" start="2025-05-24T21:44:16.090285" elapsed="4.546384"/>
+</test>
+<test id="s1-s1-s1-s1-t3" name="Ask For Animals" line="20">
+<kw name="Create List" owner="BuiltIn">
+<msg time="2025-05-24T21:44:20.638576" level="INFO">${animals} = ['Cats', 'Dogs', 'Horses']</msg>
+<var>${animals}</var>
+<arg>Cats</arg>
+<arg>Dogs</arg>
+<arg>Horses</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2025-05-24T21:44:20.638088" elapsed="0.000656"/>
+</kw>
+<kw name="Get Selections From User" owner="Dialogs">
+<msg time="2025-05-24T21:44:25.693307" level="INFO">{'message': 'What are your favorite animals?', 'options': ['Cats', 'Dogs', 'Horses']}</msg>
+<msg time="2025-05-24T21:44:25.693614" level="INFO">${selected_animals} = ['Cats', 'Dogs', 'Horses']</msg>
+<var>${selected_animals}</var>
+<arg>What are your favorite animals?</arg>
+<arg>options=${animals}</arg>
+<status status="PASS" start="2025-05-24T21:44:20.639147" elapsed="5.054634"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Entered animals: ${selected_animals}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-05-24T21:44:25.694224" elapsed="0.000535"/>
+</kw>
+<status status="PASS" start="2025-05-24T21:44:20.637332" elapsed="5.057652"/>
+</test>
+<test id="s1-s1-s1-s1-t4" name="Pass Or Fail" line="25">
+<kw name="Execute Manual Step" owner="Dialogs">
+<msg time="2025-05-24T21:44:28.727338" level="INFO">{'message': 'Manual Verification'}</msg>
+<msg time="2025-05-24T21:44:28.727672" level="INFO">${result} = PASS</msg>
+<var>${result}</var>
+<arg>Manual Verification</arg>
+<status status="PASS" start="2025-05-24T21:44:25.696133" elapsed="3.031641"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Result: ${result}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-05-24T21:44:28.728313" elapsed="0.000627"/>
+</kw>
+<status status="PASS" start="2025-05-24T21:44:25.695580" elapsed="3.033667"/>
+</test>
+<test id="s1-s1-s1-s1-t5" name="Pass Or Fail With Default Message" line="29">
+<kw name="Run Keyword And Expect Error" owner="BuiltIn">
+<kw name="Execute Manual Step" owner="Dialogs">
+<msg time="2025-05-24T21:44:33.782763" level="INFO">{'message': 'Manual Verification'}</msg>
+<msg time="2025-05-24T21:44:33.783023" level="FAIL">Error message</msg>
+<arg>Manual Verification</arg>
+<arg>default_error=Error message</arg>
+<status status="FAIL" start="2025-05-24T21:44:28.731707" elapsed="5.052383">Error message</status>
+</kw>
+<arg>*Error*</arg>
+<arg>Execute Manual Step</arg>
+<arg>Manual Verification</arg>
+<arg>default_error=Error message</arg>
+<doc>Runs the keyword and checks that the expected error occurred.</doc>
+<status status="PASS" start="2025-05-24T21:44:28.731126" elapsed="5.053261"/>
+</kw>
+<status status="PASS" start="2025-05-24T21:44:28.730165" elapsed="5.054448"/>
+</test>
+<test id="s1-s1-s1-s1-t6" name="Pause Execution" line="32">
+<kw name="Pause Execution" owner="Dialogs">
+<msg time="2025-05-24T21:44:36.310489" level="INFO">{'message': 'Connect cables'}</msg>
+<arg>Connect cables</arg>
+<status status="PASS" start="2025-05-24T21:44:33.785795" elapsed="2.524985"/>
+</kw>
+<status status="PASS" start="2025-05-24T21:44:33.785192" elapsed="2.526237"/>
+</test>
+<test id="s1-s1-s1-s1-t7" name="Custom Execution" line="35">
+<kw name="Execute Custom Step" owner="Dialogs">
+<msg time="2025-05-24T21:44:43.890512" level="INFO">{'message': 'Custom Step', 'step': 'complexform'}</msg>
+<msg time="2025-05-24T21:44:43.890803" level="INFO">${response} = {'checkbox': ['1', '2', '3'], 'input': 'Example', 'selector': 'option-2'}</msg>
+<var>${response}</var>
+<arg>step=complexform</arg>
+<status status="PASS" start="2025-05-24T21:44:36.314385" elapsed="7.576521"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${response}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-05-24T21:44:43.891269" elapsed="0.000557"/>
+</kw>
+<status status="PASS" start="2025-05-24T21:44:36.313059" elapsed="7.578974"/>
+</test>
+<kw name="Close" owner="Dialogs" type="TEARDOWN">
+<status status="PASS" start="2025-05-24T21:44:43.892966" elapsed="1.002784"/>
+</kw>
+<status status="PASS" start="2025-05-24T21:42:13.223242" elapsed="151.672683"/>
+</suite>
+<status status="PASS" start="2025-05-24T21:42:13.221781" elapsed="151.675488"/>
+</suite>
+<status status="PASS" start="2025-05-24T21:42:13.219862" elapsed="151.678390"/>
+</suite>
+<status status="PASS" start="2025-05-24T21:42:13.195299" elapsed="151.703868"/>
+</suite>
+<statistics>
+<total>
+<stat pass="7" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Robotframework-Webdialogs" id="s1" pass="7" fail="0" skip="0">Robotframework-Webdialogs</stat>
+<stat name="Example" id="s1-s1" pass="7" fail="0" skip="0">Robotframework-Webdialogs.Example</stat>
+<stat name="Test" id="s1-s1-s1" pass="7" fail="0" skip="0">Robotframework-Webdialogs.Example.Test</stat>
+<stat name="Main" id="s1-s1-s1-s1" pass="7" fail="0" skip="0">Robotframework-Webdialogs.Example.Test.Main</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
