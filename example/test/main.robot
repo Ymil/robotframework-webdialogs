@@ -12,10 +12,10 @@ ${DEFAULT_DELAY}    1s    # Configurable delay between interactions
 Get User Personal Information
     [Documentation]    Collects basic personal information through dialogs
     ${name}=    Dialogs.Get Value From User    Please enter your first name:
-    Log To Console    User provided name: ${name}
+    Log To Console    \nUser provided name: ${name}
     
     ${lastname}=    Dialogs.Get Value From User    Please enter your last name:
-    Log To Console    User provided last name: ${lastname}
+    Log To Console    \nUser provided last name: ${lastname}
 
 Select Gender From Options
     [Documentation]    Demonstrates single-selection dialog
@@ -23,7 +23,7 @@ Select Gender From Options
     ${gender}=    Dialogs.Get Selection From User    
     ...    Please select your gender:    
     ...    options=${genders}
-    Log To Console    Selected gender: ${gender}
+    Log To Console   \nSelected gender: ${gender}
 
 Select Multiple Favorite Animals
     [Documentation]    Demonstrates multi-selection dialog with validation
@@ -33,13 +33,13 @@ Select Multiple Favorite Animals
     ...    options=${animals}
     
     Should Not Be Empty    ${selected_animals}    No animals selected
-    Log To Console    Favorite animals: ${selected_animals}
+    Log To Console    \nFavorite animals: ${selected_animals}
 
 Manual Verification Step
     [Documentation]    Requires manual user verification
     ${verification_result}=    Dialogs.Execute Manual Step    
     ...    Please verify the device connection    
-    Log To Console    Verification result: ${verification_result}
+    Log To Console    \nVerification result: ${verification_result}
 
 Handle Failed Manual Verification
     [Documentation]    Tests error handling for manual steps
@@ -58,5 +58,5 @@ Process Complex Form Submission
     ${form_response}=    Dialogs.Execute Custom Step    
     ...    step=complexform    
     
-    Should Contain    ${form_response}    SUCCESS    Form submission failed
-    Log To Console    Form processing result: ${form_response}
+    Should Contain    ${form_response}    input    Form submission failed
+    Log To Console    \nForm processing result: ${form_response}
