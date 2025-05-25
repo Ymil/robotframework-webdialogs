@@ -1,5 +1,5 @@
 from .dialogs.manager import DialogManager
-from .testmanager import TestManager
+from .test_manager import TestManager
 
 dialog_manager = DialogManager()
 test_manager = TestManager()

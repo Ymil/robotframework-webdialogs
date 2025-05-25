@@ -1,3 +1,3 @@
-from .client.WebDialogs import WebDialogs  # noqa
-
 __version__ = "0.1.0"
+
+from .client.webdialogs_keywords import WebDialogs  # noqa

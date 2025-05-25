@@ -14,7 +14,7 @@ def show_dialog():
     if dialog is None:
         return redirect("/")
 
-    return render_template(f"dialogs/{dialog.template}.html", **dialog.__dict__)
+    return render_template(f"dialogs/{dialog.template}", **dialog.__dict__)
 
 
 @dialog.post("/submit")

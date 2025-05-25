@@ -21,19 +21,19 @@ class CustomStepDialog(Dialog):
     def __init__(self, message="", step=""):
         super().__init__(message)
         self.step = step
-        self.template = "custom/" + step
+        self.template = f"custom/{step}.html"
 
 
 class PauseExecutionDialog(Dialog):
-    template = "PauseExecutionDialog"
+    template = "dialog_pause_execution.html"
 
 
 class ExecuteManualStepDialog(Dialog):
-    template = "ExecuteManualStepDialog"
+    template = "dialog_execute_manual_step.html"
 
 
 class GetSelectionFromUserDialog(Dialog):
-    template = "GetSelectionFromUserDialog"
+    template = "dialog_get_selection_from_user.html"
 
     def __init__(self, message, options):
         super().__init__(message)
@@ -41,11 +41,11 @@ class GetSelectionFromUserDialog(Dialog):
 
 
 class GetSelectionsFromUserDialog(GetSelectionFromUserDialog):
-    template = "GetSelectionsFromUserDialog"
+    template = "dialog_get_selections_from_user.html"
 
 
 class GetValueFromUserDialog(Dialog):
-    template = "GetValueFromUserDialog"
+    template = "dialog_get_value_from_user.html"
 
     def __init__(self, message):
         super().__init__(message)
