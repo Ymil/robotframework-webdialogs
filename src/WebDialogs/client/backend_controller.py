@@ -20,9 +20,7 @@ WEBDIALOGS_SYMLINK_STATIC = WEBDIALOGS_PATH.joinpath("..", "server", "static", "
 
 
 class BackendController:
-    def __init__(
-        self, server_url, timeout=3600, poll_interval=0.5, custom_templates="templates", custom_static="static"
-    ):
+    def __init__(self, timeout=3600, poll_interval=0.5, custom_templates="templates", custom_static="static"):
         self.timeout = timeout
         self.poll_interval = poll_interval
         self.custom_templates = custom_templates

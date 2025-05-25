@@ -25,12 +25,12 @@ class WebDialogs:
 
     @keyword("Get Selection From User")
     def wait_for_user_selection(self, message, options):
-        self.client_backend.create_dialog("get_selection_from_user", message, options)
+        self.client_backend.create_dialog("get_selection_from_user", message, options=options)
         return self.client_backend.get_response()
 
     @keyword("Get Selections From User")
     def wait_for_user_selections(self, message, options):
-        self.client_backend.create_dialog("get_selections_from_user", message, options)
+        self.client_backend.create_dialog("get_selections_from_user", message, options=options)
         return self.client_backend.get_response()
 
     @keyword("Execute Manual Step")
