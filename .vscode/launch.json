@@ -5,12 +5,21 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Depurador de Python: Archivo actual",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        },
+        {
             "name": "Depurador de Python: Módulo",
             "type": "debugpy",
             "request": "launch",
             "module": "robot",
             "cwd": "${workspaceFolder}/example",
-            "args": ["test/main.robot"],
+            "args": [
+                "test/main.robot"
+            ],
         }
     ]
 }

@@ -5,7 +5,7 @@ import requests
 from robot.api import logger
 from robot.api.deco import keyword
 
-from ..server.server import start_flask_server
+from ..server.run import start_flask_server
 
 
 def float_range(start, stop, step):
@@ -93,7 +93,7 @@ class WebDialogs:
             if default_error:
                 msg = default_error
             else:
-                msg = self.get_value_from_user("Indique el motivo del fallo")
+                msg = self.get_value_from_user("Error message")
             raise AssertionError(msg)
         return response
 
