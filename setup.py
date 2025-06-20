@@ -21,7 +21,7 @@ Framework :: Robot Framework :: Library
 """.strip().splitlines()
 
 with open(join(CURDIR, "src", "WebDialogs", "__init__.py")) as f:
-    VERSION = re.search('\n__version__ = "(.*)"', f.read()).group(1)
+    VERSION = re.search('__version__ = "(.*)"', f.read()).group(1)
 
 with open(join(CURDIR, "README.md")) as f:
     DESCRIPTION = f.read()
@@ -34,6 +34,7 @@ setup(
     version=VERSION,
     description="k",
     long_description=DESCRIPTION,
+    long_description_content_type="text/markdown",
     author="Lautaro Linquimán",
     author_email="lylinquiman@gmail.com",
     url="https://github.com/Ymil/robotframework-webdialogs",
@@ -45,4 +46,5 @@ setup(
     install_requires=REQUIREMENTS,
     package_dir={"": "src"},
     packages=find_packages("src"),
+    include_package_data=True
 )
