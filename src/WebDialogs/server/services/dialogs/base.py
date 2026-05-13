@@ -18,9 +18,10 @@ class Dialog(ABC):
 class CustomStepDialog(Dialog):
     template = None
 
-    def __init__(self, message="", step=""):
+    def __init__(self, message="", step="", data=None):
         super().__init__(message)
         self.step = step
+        self.data = data
         self.template = f"custom/{step}.html"
 
 

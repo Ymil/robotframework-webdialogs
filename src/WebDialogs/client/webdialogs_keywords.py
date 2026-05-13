@@ -51,6 +51,6 @@ class WebDialogs:
         return self.client_backend.get_response()
 
     @keyword("Execute Custom Step")
-    def execute_custom_step(self, step):
-        self.client_backend.create_dialog("execute_custom_step", "Custom Step", step=step)
+    def execute_custom_step(self, step, data=None):
+        self.client_backend.create_dialog("execute_custom_step", "Custom Step", step=step, data=data)
         return self.client_backend.get_response()
