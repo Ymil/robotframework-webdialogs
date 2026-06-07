@@ -60,3 +60,17 @@ Process Complex Form Submission
     
     Should Contain    ${form_response}    input    Form submission failed
     Log To Console    \nForm processing result: ${form_response}
+
+Process Data-Driven Complex Form Submission
+    [Documentation]    Tests custom form handling with data passed to the template
+    VAR    &{testdata}
+    ...    data1=value1
+    ...    data2=${EMPTY}
+
+    ${form_response}=    Dialogs.Execute Custom Step
+    ...    step=data_driven_form
+    ...    data=${testdata}
+
+    Should Contain    ${form_response}    data1    Form submission failed
+    Should Contain    ${form_response}    data2    Form submission failed
+    Log To Console    \nData-driven form processing result: ${form_response}

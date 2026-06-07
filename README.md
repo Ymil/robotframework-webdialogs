@@ -10,6 +10,7 @@ Features
 - Embedded Flask web server, running alongside your tests.
 - Support for dialogs with buttons, inputs, and selections.
 - Ability to create custom HTML dialog templates with Jinja2.
+- Ability to pass Robot Framework data into custom templates.
 - Architecture based on Robot Framework client + Flask server for maximum flexibility.
 
 ![ezgif-3341d1f635d951](https://github.com/user-attachments/assets/6be4c67d-66ac-4227-b1da-f346b55fea88)
@@ -111,6 +112,24 @@ Process Complex Form Submission
     Log To Console    \nForm processing result: ${form_response}
 ```
 
+You can also pass data into the custom template:
+
+```robotframework
+Process Data-Driven Complex Form Submission
+    [Documentation]    Tests custom form handling with data passed to the template
+    VAR    &{testdata}
+    ...    data1=value1
+    ...    data2=${EMPTY}
+
+    ${form_response}=    Dialogs.Execute Custom Step
+    ...    step=data_driven_form
+    ...    data=${testdata}
+
+    Should Contain    ${form_response}    data1    Form submission failed
+    Should Contain    ${form_response}    data2    Form submission failed
+    Log To Console    \nData-driven form processing result: ${form_response}
+```
+
 ![](assets/Execute%20Custom%20Step.png)
 
 
@@ -119,7 +138,18 @@ Process Complex Form Submission
 You can create HTML dialog templates with Jinja2 for complex interfaces.
 
 Use keyword `Execute Custom Step     step=complexform` to open the custom dialog.
-Create the dialog template in a file named `complexform.html` in the `templates/` folder in you root project.
+Create the dialog template in a file named `complexform.html` in the `templates/` folder in your root project.
+
+When using `Execute Custom Step` with the optional `data` argument, the values are available in the Jinja2 template through the `data` variable:
+
+```html
+{% for key, value in data.items() %}
+  <label>{{ key }}</label>
+  <input name="{{ key }}" value="{{ value }}">
+{% endfor %}
+```
+
+The submitted form values are returned to Robot Framework as the custom step response.
 
 ## Complete Example
 
