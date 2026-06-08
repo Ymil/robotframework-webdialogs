@@ -36,17 +36,21 @@ class BackendController:
         start_flask_server()
 
     def _prepare_enviroment(self):
-        custom_templates_path = Path(self.custom_templates)
-        if custom_templates_path.exists():
-            if WEBDIALOGS_SYMLINK_TEMPLATES.exists():
-                WEBDIALOGS_SYMLINK_TEMPLATES.unlink()
-            WEBDIALOGS_SYMLINK_TEMPLATES.symlink_to(custom_templates_path.absolute())
+        self._prepare_custom_directory(self.custom_templates, WEBDIALOGS_SYMLINK_TEMPLATES)
+        self._prepare_custom_directory(self.custom_static, WEBDIALOGS_SYMLINK_STATIC)
 
-        custom_static_path = Path(self.custom_static)
-        if custom_static_path.exists():
-            if WEBDIALOGS_SYMLINK_STATIC.exists():
-                WEBDIALOGS_SYMLINK_STATIC.unlink()
-            WEBDIALOGS_SYMLINK_STATIC.symlink_to(custom_static_path.absolute())
+    @staticmethod
+    def _prepare_custom_directory(source, destination):
+        source_path = Path(source)
+        if not source_path.exists():
+            return
+
+        destination.parent.mkdir(parents=True, exist_ok=True)
+
+        if destination.exists() or destination.is_symlink():
+            destination.unlink()
+
+        destination.symlink_to(source_path.absolute(), target_is_directory=True)
 
     def _check_alive_backend(self):
         for retry in range(0, 10):

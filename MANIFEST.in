@@ -2,3 +2,5 @@ include README.md
 include LICENSE
 include requirements.txt
 recursive-include src/WebDialogs/server/templates *
+recursive-include src/WebDialogs/server/static *
+include src/WebDialogs/server/static/.gitkeep

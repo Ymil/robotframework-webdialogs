@@ -140,6 +140,19 @@ You can create HTML dialog templates with Jinja2 for complex interfaces.
 Use keyword `Execute Custom Step     step=complexform` to open the custom dialog.
 Create the dialog template in a file named `complexform.html` in the `templates/` folder in your root project.
 
+Custom templates and static assets can be configured when the library starts:
+
+```robotframework
+Library    WebDialogs    custom_templates=templates    custom_static=static
+```
+
+Files in the configured static folder are served by Flask under `static/custom`.
+For example, if your project has `static/logo.png`, use it in a custom template with:
+
+```html
+<img src="{{ url_for('static', filename='custom/logo.png') }}" alt="Logo">
+```
+
 When using `Execute Custom Step` with the optional `data` argument, the values are available in the Jinja2 template through the `data` variable:
 
 ```html

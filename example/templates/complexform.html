@@ -3,6 +3,11 @@
 <h4 class="card-title mb-4 text-center">Complex Form</h4>
 <form method="post" action="/dialog/submit">
   <p>This form is custom and return all the values</p>
+  <img
+    src="{{ url_for('static', filename='custom/sample-image.svg') }}"
+    alt="Sample image"
+    class="img-fluid mb-3"
+  >
   <div class="mb-3">
     <input name="input" class="form-control form-control-lg" required
       autofocus>
