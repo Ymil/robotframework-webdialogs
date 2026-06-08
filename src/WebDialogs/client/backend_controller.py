@@ -66,7 +66,16 @@ class BackendController:
         requests.post(f"{WEBDIALOGS_BACKEND_URL}/api/test/{signal}")
 
     def create_dialog(self, dialog_type, message, **kwargs):
-        requests.post(f"{WEBDIALOGS_BACKEND_URL}/api/create/{dialog_type}", json={"message": message, **kwargs})
+        response = requests.post(f"{WEBDIALOGS_BACKEND_URL}/api/create/{dialog_type}", json={"message": message, **kwargs})
+        if response.ok:
+            return
+
+        try:
+            error = response.json().get("error")
+        except ValueError:
+            error = response.text
+
+        raise Exception(f"Error creating dialog '{dialog_type}': {error or response.reason}")
 
     def get_response(self):
         for _ in float_range(0, self.timeout, self.poll_interval):

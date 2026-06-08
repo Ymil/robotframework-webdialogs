@@ -1,4 +1,5 @@
-from flask import Blueprint, request
+from flask import Blueprint, current_app, request
+from jinja2 import TemplateNotFound
 
 from ..services import dialog_manager, test_manager
 
@@ -9,7 +10,14 @@ api = Blueprint("api", __name__, url_prefix="/api")
 def api_create(type):
     data = request.get_json()
     print(data)
-    dialog_manager.create(type, **data)
+    try:
+        dialog_manager.create(type, **data)
+        dialog = dialog_manager.get()
+        current_app.jinja_env.get_template(f"dialogs/{dialog.template}")
+    except (TemplateNotFound, ValueError) as error:
+        dialog_manager.reset()
+        return {"error": str(error)}, 400
+
     return {}
 
 
