@@ -167,6 +167,7 @@ A fully working example is available in the example folder of the repository, wh
 ## Requirements
 
 - Python 3.9+
+- Python 3.14 is supported; package metadata does not impose an upper Python version limit.
 - Robot Framework 7.0+
 - Modern web browser (Chrome, Firefox, Edge)
 
